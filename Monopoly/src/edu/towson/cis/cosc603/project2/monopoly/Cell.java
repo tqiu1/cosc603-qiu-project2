@@ -4,7 +4,7 @@ package edu.towson.cis.cosc603.project2.monopoly;
 /**
  * The Class Cell.
  */
-public abstract class Cell {
+public abstract class Cell implements IOwnable {
 	
 
 	/** The name. */
@@ -17,37 +17,29 @@ public abstract class Cell {
 	private boolean available = true;
 	
 
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#getName()
 	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * Gets the owner.
-	 *
-	 * @return the owner
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#getTheOwner()
 	 */
 	public Player getTheOwner() {
 		return theOwner;
 	}
 	
-	/**
-	 * Gets the price.
-	 *
-	 * @return the price
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#getPrice()
 	 */
 	public int getPrice() {
 		return 0;
 	}
 
-	/**
-	 * Checks if is available.
-	 *
-	 * @return true, if is available
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#isAvailable()
 	 */
 	public boolean isAvailable() {
 		return available;
@@ -58,10 +50,8 @@ public abstract class Cell {
 	 */
 	public abstract void playAction();
 
-	/**
-	 * Sets the available.
-	 *
-	 * @param available the new available
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#setAvailable(boolean)
 	 */
 	public void setAvailable(boolean available) {
 		this.available = available;
@@ -76,10 +66,8 @@ public abstract class Cell {
 		this.name = name;
 	}
 
-	/**
-	 * Sets the owner.
-	 *
-	 * @param owner the new owner
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#setTheOwner(edu.towson.cis.cosc603.project2.monopoly.Player)
 	 */
 	public void setTheOwner(Player owner) {
 		this.theOwner = owner;
