@@ -47,8 +47,9 @@ public abstract class Cell implements IOwnable {
 	
 	/**
 	 * Play action.
-	 * @param msg TODO
-	 * @return TODO
+	 *
+	 * @param msg the msg
+	 * @return the boolean
 	 */
 	public abstract Boolean playAction(String msg);
 

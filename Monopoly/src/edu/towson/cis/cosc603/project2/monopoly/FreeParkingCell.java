@@ -23,19 +23,15 @@ public class FreeParkingCell extends Cell {
 		return available;
 	}
 
-	/**
-	 * Checks if is available.
-	 *
-	 * @return true, if is available
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.Cell#isAvailable()
 	 */
 	public boolean isAvailable() {
 		return available;
 	}
 
-	/**
-	 * Sets the available.
-	 *
-	 * @param available the new available
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.Cell#setAvailable(boolean)
 	 */
 	public void setAvailable(boolean available) {
 		this.available = available;

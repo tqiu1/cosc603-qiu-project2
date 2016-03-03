@@ -72,6 +72,12 @@ public class PropertyCell extends Cell {
 		return rentToCharge;
 	}
 
+	/**
+	 * Calculate monopolies rent.
+	 *
+	 * @param rentToCharge the rent to charge
+	 * @return the int
+	 */
 	private int calculateMonopoliesRent(int rentToCharge) {
 		String [] monopolies = theOwner.getMonopolies();
 		for(int i = 0; i < monopolies.length; i++) {
@@ -141,19 +147,15 @@ public class PropertyCell extends Cell {
 		this.rent = rent;
 	}
 
-	/**
-	 * Checks if is available.
-	 *
-	 * @return true, if is available
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.Cell#isAvailable()
 	 */
 	public boolean isAvailable() {
 		return available;
 	}
 
-	/**
-	 * Sets the available.
-	 *
-	 * @param available the new available
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.Cell#setAvailable(boolean)
 	 */
 	public void setAvailable(boolean available) {
 		this.available = available;
