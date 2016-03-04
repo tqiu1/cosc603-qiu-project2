@@ -181,4 +181,62 @@ public class GameBoard {
     public void removeCards() {
         communityChestCards.clear();
     }
+
+	/**
+	 * Btn draw card clicked.
+	 * @param gui
+	 * @param gameMaster
+	 * @return  the card
+	 */
+	public Card btnDrawCardClicked(MonopolyGUI gui, GameMaster gameMaster) {
+		gui.setDrawCardEnabled(false);
+		CardCell cell = (CardCell) gameMaster.getCurrentPlayer().getPosition();
+		Card card = null;
+		if (cell.getType() == Card.TYPE_CC) {
+			card = drawCCCard();
+			card.applyAction();
+		} else {
+			card = drawChanceCard();
+			card.applyAction();
+		}
+		gui.setEndTurnEnabled(true);
+		return card;
+	}
+
+	/**
+	 * Send to jail.
+	 * @param player  the player
+	 * @param gui
+	 * @param gameMaster
+	 */
+	public void sendToJail(Player player, MonopolyGUI gui, GameMaster gameMaster) {
+		gameMaster.sendToJail(player, gui, this);
+	}
+
+	/**
+	 * Move player.
+	 * @param player  the player
+	 * @param diceValue  the dice value
+	 * @param gui
+	 * @param gameMaster
+	 */
+	public void movePlayer(Player player, int diceValue, MonopolyGUI gui,
+			GameMaster gameMaster) {
+		gui(player, diceValue, gui, gameMaster);
+		gameMaster.updateGUI();
+	}
+
+	private void gui(Player player, int diceValue, MonopolyGUI gui,
+			GameMaster gameMaster) {
+		IOwnable currentPosition = player.getPosition();
+		int positionIndex = queryCellIndex(currentPosition.getName());
+		int newIndex = (positionIndex + diceValue) % getCellNumber();
+		if (newIndex <= positionIndex || diceValue > getCellNumber()) {
+			player.setMoney(player.getMoney() + 200);
+		}
+		player.setPosition(getCell(newIndex));
+		gui.movePlayer(gameMaster.getPlayerIndex(player), positionIndex,
+				newIndex);
+		gameMaster.playerMoved(player);
+	}
 }

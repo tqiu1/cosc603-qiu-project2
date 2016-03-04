@@ -17,15 +17,19 @@ public class GameMasterTest extends TestCase {
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp() throws Exception {
-		gameMaster = GameMaster.instance();
-		gameMaster.setGameBoard(new GameBoardFull());
+		gameMaster();
 		gameMaster.setNumberOfPlayers(2);
         gameMaster.getPlayer(0).setName("Player 1");
         gameMaster.getPlayer(1).setName("Player 2");
+	}
+
+	private void gameMaster() {
+		gameMaster = GameMaster.instance();
+		gameMaster.setGameBoard(new GameBoardFull());
 		gameMaster.reset();
 		gameMaster.setTestMode(true);
-        gameMaster.setGUI(new MockGUI());
-        gameMaster.startGame();
+		gameMaster.setGUI(new MockGUI());
+		gameMaster.startGame();
 	}
 	
 	/**
