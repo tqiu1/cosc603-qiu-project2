@@ -16,12 +16,8 @@ public class RRCellInfoFormatter implements CellInfoFormatter {
     public String format(IOwnable cell) {
         RailRoadCell c = (RailRoadCell)cell;
         StringBuffer buf = new StringBuffer();
-        Player owner = cell.getTheOwner();
-        String ownerName = "";
-        if(owner != null) {
-        	ownerName = owner.getName();
-        }
-        buf.append("<html><b><font color='lime'>")
+        String ownerName = ownerName(cell);
+		buf.append("<html><b><font color='lime'>")
                 .append(cell.getName())
                 .append("</font></b><br>")
                 .append("$").append(c.getPrice())
@@ -29,4 +25,13 @@ public class RRCellInfoFormatter implements CellInfoFormatter {
                 .append("</html>");
         return buf.toString();
     }
+
+	private String ownerName(IOwnable cell) {
+		Player owner = cell.getTheOwner();
+		String ownerName = "";
+		if (owner != null) {
+			ownerName = owner.getName();
+		}
+		return ownerName;
+	}
 }

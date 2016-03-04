@@ -14,14 +14,10 @@ import edu.towson.cis.cosc603.project2.monopoly.*;
 public class GUICell extends JPanel {
 
 	
+	private GUICellProduct gUICellProduct = new GUICellProduct();
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
-	/** The cell. */
-	private IOwnable cell;
-	
-	/** The lbl info. */
-	private JLabel lblInfo;
 	
 	/** The lbl players. */
 	private JLabel[] lblPlayers = new JLabel[GameMaster.MAX_PLAYER];
@@ -32,7 +28,7 @@ public class GUICell extends JPanel {
      * @param cell the cell
      */
     public GUICell(IOwnable cell) {
-        this.cell = cell;
+        gUICellProduct.setCell(cell);
         setLayout(new OverlayLayout(this));
         setBorder(new BevelBorder(BevelBorder.LOWERED));
         JPanel pnlPlayer = new JPanel();
@@ -41,21 +37,9 @@ public class GUICell extends JPanel {
         createPlayerLabels(pnlPlayer);
         add(pnlPlayer);
         setPreferredSize(new Dimension(100,100));
-        addCellInfo();
+        gUICellProduct.addCellInfo(this);
         this.doLayout();
 	}
-	
-	/**
-	 * Adds the cell info.
-	 */
-	private void addCellInfo() {
-        lblInfo = new JLabel();
-		displayInfo();
-        JPanel pnlInfo = new JPanel();
-        pnlInfo.setLayout(new GridLayout(1, 1));
-        pnlInfo.add(lblInfo);
-        add(pnlInfo);
-    }
 	
 	/**
 	 * Adds the player.
@@ -85,9 +69,7 @@ public class GUICell extends JPanel {
 	 * Display info.
 	 */
 	public void displayInfo() {
-		lblInfo.setText(InfoFormatter.cellInfo(cell));
-        this.invalidate();
-		this.repaint();
+		gUICellProduct.displayInfo(this);
 	}
 
 	/**
@@ -96,7 +78,7 @@ public class GUICell extends JPanel {
 	 * @return the cell
 	 */
 	public IOwnable getCell() {
-		return cell;
+		return gUICellProduct.getCell();
 	}
 	
 	/**

@@ -16,9 +16,13 @@ public class PropertyCellTest extends TestCase {
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp() {
+		gameMaster();
+		gameMaster.setNumberOfPlayers(2);
+	}
+
+	private void gameMaster() {
 		gameMaster = GameMaster.instance();
 		gameMaster.setGameBoard(new SimpleGameBoard());
-		gameMaster.setNumberOfPlayers(2);
 		gameMaster.reset();
 		gameMaster.setGUI(new MockGUI());
 	}
